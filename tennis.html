@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Tennis</title>
+    <link rel="icon" type="image/x-icon" href="/Users/samuellyo/Desktop/HTML Project/tennisicon.png">
+    <meta charset="UTF-8">
+
+    <style>
+
+        html {
+            cursor: none;
+            height: 100%;
+        }
+        th {
+            border-top: 1px solid;
+            border-left: 1px solid;
+            border-bottom: 1px solid;
+            line-height: 2.5;
+            background-color: #F1F1EF;
+            border-color: #E9E9E7;
+        }
+        td {
+            border-bottom: 1px solid;
+            border-left: 1px solid;
+            line-height: 1.5;
+            border-color: #E9E9E7;
+        }
+        .righttable {
+            border-right: 1px solid;
+            border-color: #E9E9E7;
+        }
+        table {
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+            overflow-x: auto;
+            border-spacing: 0;
+            font-size: 12pt;
+            padding-left: 75px;
+            padding-right: 75px;
+        }
+        .total {
+            font-weight: bold;
+        }
+        tbody {
+            white-space: nowrap;
+        }
+        th, td {
+            padding: 8px 15px;
+
+        }
+        th {
+            position: sticky;
+            top: 0;
+            vertical-align: bottom;
+        }
+
+        .tennis-ball {
+            font-size: 75px;
+            text-align: left;
+            padding-left: 75px;
+            padding-right: 75;
+        }
+        .title {
+            font-size: 38px;
+            text-align: left;
+            padding-left: 75px;
+            padding-right: 75px;
+            color: #000;
+        }
+        
+        body {
+            font-family: Helvetica;
+            color: #000;
+            font-size: 12pt;
+            background-color: #fff;
+            min-height: 100%;
+        }
+    
+        h2 {
+            font-size: 20pt;
+            padding-left: 75px;
+            padding-right: 75px;
+        }
+        h3 {
+            padding-left: 75px;
+            padding-right: 75px;
+        }
+        hr {
+            margin-left: 75px;
+            margin-right: 75px;
+        }
+        p {
+            padding-left: 75px;
+            padding-right: 75px;
+            color: #000;
+        }
+        li {
+            color: #000;
+        }
+        ul {
+            margin-left: 75px;
+            margin-right: 75px;
+        }
+        ol {
+            margin-left: 75px;
+            margin-right: 75px;
+        }
+
+        a:link {
+            color: #000000;
+        }
+        a:visited {
+            color: #000000;
+        }
+        a:hover {
+            color: #92AB00;
+        }
+        .line {
+  background-color: transparent;
+  color: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+
+.line:after,
+.line:before {
+  background: #92AB00;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  transform-origin: 0 0;
+  transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  width: 100%;
+}
+
+.line:before {
+  opacity: 0.5;
+  transform: translateZ(0) scaleX(0);
+  transform-origin: 100% 100%;
+  transition: transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.15s;
+}
+
+.line:hover:after {
+  transform: translateZ(0) scaleX(0);
+  transform-origin: 100% 100%;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+footer {
+    text-align: center;
+    font-size: 15pt;
+    padding-top: 5%;
+    padding-bottom: 3%
+}
+
+div.cursors div {
+    position: absolute;
+    top: var(--y, 0);
+    left: var(--x, 0);
+    transform: translate(-50%, -50%);
+    width: 36px;
+    height: 36px;
+    background-color: #888;
+    border-radius: 50%;
+    z-index: 2;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    opacity: 5%
+
+}
+div.black div {
+    position: absolute;
+    top: var(--y, 0);
+    left: var(--x, 0);
+    transform: translate(-50%, -50%);
+    width: 9px;
+    height: 9px;
+    background-color: #fff;
+    border-radius: 50%;
+    z-index: 2;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+}
+    </style>
+</head>
+
+<body>
+    <div class="custom-cursor site-wide">
+        <div class="pointer"></div>
+    </div>
+
+
+    <h1 class="tennis-ball">&#127934</h1>
+    <h1 class="title">Tennis</h1>
+    <div id="circle">
+
+        <h2 style="line-height: 2.5">Rules</h2>
+        <h3 style="line-height: 0.2">Gameplay</h3>
+        <p style="line-height: 1.5">Only one bounce is allowed between going over the net and being hit. Tennis follows a point &#8594 game &#8594 set &#8594 match format.</p>
+        &nbsp;
+        <h3 style="line-height: 0.2">Starting</h3>
+        <p Style="line-height: 1.5">There can either be a coin flip or a tennis racket spin. Whoever wins can choose from one of the following:
+        <ol Style="line-height: 1.5">
+            <li>To serve or receive.</li>
+            <li>Which side they start on.</li>
+            <li>To pass the choiuce to the opponent. (Cannot be passed back)</li>
+        </ol>
+        <p Style="line-height: 1.5">The loser can choose from one of the remaining choices.</p>
+        &nbsp;
+        </p>
+        <h3 style="line-height: 0.2">Scoring</h3>
+        <ul Style="line-height: 1.5">
+            <li>0 Points = <em>Love</em></li>
+            <li>1 Point = <em>15</em></li>
+            <li>2 Points = <em>30</em></li>
+            <li>3 Points = <em>45</em></li>
+            <li>4 Points = <em>Game</em></li>
+            <li>Tie = <em>All</em></li>
+            <li>40-40 = <em>Deuce</em></li>
+            <li>Server wins deuce point = <em>Ad-in</em></li>
+            <li>Receiver wins deuce point = <em>Ad-out</em></li>
+        </ul>
+        <p Style="line-height: 1.5">A gap of 2 points is needed to win a game. If the score is 5-5, a 7-5 score will win the game. If the score is 6-6, a new tiebreaker game is started where a player has to reach 7 points with a 2-point gap. If 6-6 is reached in the tiebreaker game, continue playing until a gap of 2 points is reached.</p>
+        &nbsp;
+        <h3 style="line-height: 0.2">Switching Sides</h3>
+        <p Style="line-height: 1.5">Players switch sides after the first game and every 2 games after that.</p>
+        <p Style="line-height: 1.5"><b>Advantage Set: </b>In an advantage set, a player needs to win 6 games with a gap of 2 games. There is no tiebreaker at 6-6, you just have to win by 2 games.</p>
+        <p Style="line-height: 1.5"><b>Tiebreaker Set: </b>In a tiebreaker set, a player needs to win 6 games. If 6-6 is reached, a tiebreaker game is played.</p>
+        &nbsp;
+    </div>
+    <hr class="default">
+    &nbsp;
+
+    <div>
+    <h2>Grand Slam</h2>
+    <p Style="line-height: 1.5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A Grand Slam is one of the <em>four</em> major tournaments in tennis worldwide. These four tournaments being Wimbledon, the US Open, the Australian Open, and the French Open. These four tournaments all have large payouts to the winner and are the most viewed tennis events in the world. In total, 281 people have won Grand Slam tournaments.</p>
+    &nbsp;
+    <h3><a href="https://www.wimbledon.com/" target="_blank" class="line">Wimbledon &#127988;&#917607;&#917602;&#917605;&#917614;&#917607;&#917631;</a></h3>
+    <p Style="line-height: 1.5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wimbledon is the oldest Grand Slam tournament and is played in London, England. The first Wimbledon was in 1877 and is currently played on a grass court. Wimbledon 2023 took place from July 1st until July 14th and the winning prize was £44,700,000 which is equal to $77,331,000 in Canadian dollars.</p>
+    &nbsp;
+    <h3><a href="https://www.usopen.org/" target="_blank" class="line">US Open &#127482;&#127480;</a></h3>
+    <p Style="line-height: 1.5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The US Open is the second oldest Grand Slam tournament and is played in New York City, USA. The first US Open was in 1881 and is currently played on a hard court. The 2023 US Open will take place from August 28th until September 10th with a winning prize of $65,000,000 which is equal to $88,400,000 in Canadian dollars.</p>
+    &nbsp;
+    <h3><a href="https://www.rolandgarros.com/" target="_blank" class="line">French Open &#127467;&#127479;</a></h3>
+    <p Style="line-height: 1.5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The French Open is the third oldest Grand Slam tournament, but is recognized as the youngest as it wasn't international until 1910, but the first French Open was in 1891. It is played in Paris, France on a clay court. The 2023 French Open took place from May 26th until June 9th with a winning prize of €49,600,000 which is equal to $72,912,000 in Canadian dollars. </p>
+    &nbsp;
+    <h3><a href="https://www.ausopen.com/" targe="_blank" class="line">Australian Open &#127462;&#127482;</a></h3>
+    <p Style="line-height: 1.5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Australian Open is the youngest tournament but second youngest Grand Slam. The Australian Open takes place in Melbourne, Australia on a hard court and first started in 1905. The 2024 Australian Open will take place from January 15th until January 28th with a winning prize of $76,500,000 which is equal to $65,790,000 in Canadian dollars. The reason for the tournament taking place in January is due to Australia's difference in climate around the year. They have peak summer conditions around Christmas time.</p>
+    &nbsp;
+    <h2 Style="line-height: 1">Top 10 Grand Slam Winners</h2>
+    <h3 Style="line-height: 2.5">Men</h3>
+    <table style:"overflow-x: auto;">
+        <tr>
+            <th>Player</th>
+            <th></th>
+            <th>Total</th>
+            <th>Wimbledon</th>
+            <th>US Open</th>
+            <th>French Open</th>
+            <th class="righttable">Australian Open</th>
+        </tr>
+        <tr>
+            <td>Novak Djokovic</td>
+            <td>&#127479;&#127480;</td>
+            <td Class="total">23</td>
+            <td>7</td>
+            <td>3</td>
+            <td>3</td>
+            <td class="righttable">10</td>
+        </tr>
+        <tr>
+            <td>Rafael Nadal</td>
+            <td>&#127466;&#127480;</td>
+            <td class="total">22</td>
+            <td>2</td>
+            <td>4</td>
+            <td>14</td>
+            <td class="righttable">2</td>
+        </tr>
+        <tr>
+            <td>Roger Federer</td>
+            <td>&#127464;&#127469;</td>
+            <td Class="total">20</td>
+            <td>8</td>
+            <td>5</td>
+            <td>1</td>
+            <td class="righttable">6</td>
+        </tr>
+        <tr>
+            <td>Pete Sampras</td>
+            <td>&#127482;&#127480;</td>
+            <td Class="total">14</td>
+            <td>7</td>
+            <td>5</td>
+            <td>0</td>
+            <td class="righttable" >2</td>
+        </tr>
+        <tr>
+            <td>Roy Emerson</td>
+            <td>&#127462;&#127482;</td>
+            <td Class="total">12</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td class="righttable">6</td>
+        </tr>
+        <tr>
+            <td>Bjorn Borg</td>
+            <td>&#127480;&#127466;</td>
+            <td Class="total">11</td>
+            <td>5</td>
+            <td>0</td>
+            <td>6</td>
+            <td class="righttable">0</td>
+        </tr>
+        <tr>
+            <td>Rod Laver</td>
+            <td>&#127462;&#127482;</td>
+            <td Class="total">11</td>
+            <td>4</td>
+            <td>2</td>
+            <td>2</td>
+            <td class="righttable">3</td>
+        </tr>
+        <tr>
+            <td>Bill Tilden</td>
+            <td>&#127482;&#127480;</td>
+            <td Class="total">10</td>
+            <td>3</td>
+            <td>7</td>
+            <td>0</td>
+            <td class="righttable">0</td>
+        </tr>
+        <tr>
+            <td>Andre Agassi</td>
+            <td>&#127482;&#127480;</td>
+            <td Class="total">8</td>
+            <td>1</td>
+            <td>2</td>
+            <td>1</td>
+            <td class="righttable">4</td>
+        </tr>
+        <tr>
+            <td>Jimmy Connors</td>
+            <td>&#127482;&#127480;</td>
+            <td Class="total">8</td>
+            <td>2</td>
+            <td>5</td>
+            <td>0</td>
+            <td class="righttable">1</td>
+        </tr>
+    </table>
+&nbsp;
+    <h3 Style="line-height: 2.5">Women</h3>
+    <table style:"overflow-x: auto;">
+        <tr>
+            <th>Player</th>
+            <th></th>
+            <th>Total</th>
+            <th>Wimbledon</th>
+            <th>US Open</th>
+            <th>French Open</th>
+            <th class="righttable">Australian Open</th>
+        </tr>
+        <tr>
+            <td>Margaret Court</td>
+            <td>&#127462;&#127482;</td>
+            <td Class="total">24</td>
+            <td>3</td>
+            <td>5</td>
+            <td>5</td>
+            <td class="righttable">11</td>
+        </tr>
+        <tr>
+            <td>Serena Williams</td>
+            <td>&#127482;&#127480;</td>
+            <td Class="total">23</td>
+            <td>7</td>
+            <td>6</td>
+            <td>3</td>
+            <td class="righttable">7</td>
+        </tr>
+        <tr>
+            <td>Steffi Graf</td>
+            <td>&#127465;&#127466;	</td>
+            <td Class="total">22</td>
+            <td>7</td>
+            <td>5</td>
+            <td>6</td>
+            <td class="righttable">4</td>
+        </tr>
+        <tr>
+            <td>Helen Wills</td>
+            <td>&#127482;&#127480;</td>
+            <td Class="total">19</td>
+            <td>8</td>
+            <td>7</td>
+            <td>4</td>
+            <td class="righttable" >0</td>
+        </tr>
+        <tr>
+            <td>Chris Evert</td>
+            <td>&#127482;&#127480;</td>
+            <td Class="total">18</td>
+            <td>3</td>
+            <td>6</td>
+            <td>7</td>
+            <td class="righttable">2</td>
+        </tr>
+        <tr>
+            <td>Martina Navratilova</td>
+            <td>&#127464;&#127487;</td>
+            <td Class="total">18</td>
+            <td>9</td>
+            <td>4</td>
+            <td>2</td>
+            <td class="righttable">3</td>
+        </tr>
+        <tr>
+            <td>Billie Jean King</td>
+            <td>&#127482;&#127480;</td>
+            <td Class="total">12</td>
+            <td>6</td>
+            <td>4</td>
+            <td>1</td>
+            <td class="righttable">1</td>
+        </tr>
+        <tr>
+            <td>Maureen Connolly</td>
+            <td>&#127482;&#127480;</td>
+            <td Class="total">9</td>
+            <td>3</td>
+            <td>3</td>
+            <td>2</td>
+            <td class="righttable">1</td>
+        </tr>
+        <tr>
+            <td>Monica Seles</td>
+            <td>&#127479;&#127480;</td>
+            <td Class="total">9</td>
+            <td>0</td>
+            <td>2</td>
+            <td>3</td>
+            <td class="righttable">4</td>
+        </tr>
+        <tr>
+            <td>Suzanne Lenglen</td>
+            <td>&#127467;&#127479;</td>
+            <td Class="total">8</td>
+            <td>6</td>
+            <td>0</td>
+            <td>2</td>
+            <td class="righttable">0</td>
+        </tr>
+    </table>
+</div>
+
+<footer>
+    <p><a href="https://www.instagram.com/samuel.lyo" class="line"><b>Follow me on Instagram</b></a></p>
+</footer>
+<div class="cursors">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<div class="black">
+    <div></div>
+</div>
+<script src="main.js"></script>
+<script src="maincursor.js"></script>
+</body>
+</html>
